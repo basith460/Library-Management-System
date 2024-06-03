@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body >
+	
+	<h1 style="text-align: center;">Library Directory</h1>
+	<form action="addlibrary">
+		<button type="submit">Add Library</button>
+	</form>
+	<br><br>
+	<table border="2">
+		<tr style="background-color: black;">
+			<th>Id</th>
+			<th>Library Name</th>
+			<th>Books</th>
+			<th>Subject</th>
+			<th>Publisher</th>
+			<th>Action </th>
+		</tr>
+		<tr  th:each="temp: ${lib}">
+			<td th:text="${temp.id}"></td>
+			<td th:text="${temp.name}"></td>
+			<td th:text="${temp.commaSeparatedBooknames}"></td>
+			<td th:text="${temp.subject}"></td>
+			<td th:text="${temp.publisher}"></td>
+			<td><a th:href="@{update-library(id=${temp.id})}">Update</a></td>
+			<td><a th:href="@{delete-library(id=${temp.id})}">Delete</a></td>
+			
+	</table>
+	
+</body>
+</html>
+<style>
+	
+a:hover, a:active {
+  background-color:rgb(255, 0, 0);
+}
+
+th{
+	color: white;
+}
+</style>
